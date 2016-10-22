@@ -1,0 +1,10 @@
+.top-bar
+  .top-bar-left
+    ul.dropdown.menu data-dropdown-menu=true
+      li.menu-text = t('site_title')
+  .top-bar-right
+    - if @user.present?
+      ul.menu
+        li
+          = link_to destroy_user_session_path, method: :delete, class: 'button' do
+            = t('logout')

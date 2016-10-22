@@ -1,0 +1,7 @@
+- if flash.present?
+  - flash.each do |name, message|
+    .callout class="#{name}" data-closable=true
+      p = message
+      button.close-button aria-label='Dismiss alert' type='button' data-close=true
+        span aria-hidden=true
+          |&times;
