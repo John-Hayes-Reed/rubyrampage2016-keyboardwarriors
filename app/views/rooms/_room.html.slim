@@ -1,10 +1,10 @@
 tr
   td = room.difficulty
-  td = room.user.email
+  td = room.owner.try(:name)
   td = room.member_count
-  td = room.members
+  td
+    - room.users.each do |user|
+      = user.name
   td
     .button-group
-      = link_to 'Show', room, class: 'button'
-      = link_to 'Edit', edit_room_path(room), class: 'button'
-      = link_to 'Destroy', room, data: { confirm: 'Are you sure?' }, method: :delete, class: 'button alert'
+      = link_to t('join_room'), room, class: 'button'

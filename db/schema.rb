@@ -10,20 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161022150344) do
+ActiveRecord::Schema.define(version: 20161022171508) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "rooms", force: :cascade do |t|
-    t.integer  "user_id"
     t.integer  "victor_id"
     t.string   "difficulty"
     t.string   "status"
     t.integer  "member_count"
-    t.text     "members"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "owner_id"
+    t.index ["owner_id"], name: "index_rooms_on_owner_id", using: :btree
+  end
+
+  create_table "rooms_users", id: false, force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "room_id"
+    t.index ["room_id"], name: "index_rooms_users_on_room_id", using: :btree
+    t.index ["user_id"], name: "index_rooms_users_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -39,6 +46,7 @@ ActiveRecord::Schema.define(version: 20161022150344) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "name"
   end
 
 end

@@ -9,9 +9,10 @@ h1 Listing rooms
       thead
         tr
           th = t('difficulty')
-          th = t('user')
+          th = t('owner')
           th = t('member_count')
-          th = t('members')
+          th = t('users')
+          th
 
       tbody#rooms-table-body
         - @rooms.each do |room|
