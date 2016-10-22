@@ -13,4 +13,8 @@ class Room < ApplicationRecord
     v.validates :member_count, inclusion: {in: 2..4}
   end
 
+  after_create_commit do
+    AddRoomJob.perform_later self
+  end
+
 end

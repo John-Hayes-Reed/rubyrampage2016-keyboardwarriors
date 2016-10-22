@@ -8,13 +8,11 @@ h1 Listing rooms
     table
       thead
         tr
-          th
-          th
-          th
+          th = t('difficulty')
+          th = t('user')
+          th = t('member_count')
+          th = t('members')
 
-      tbody
+      tbody#rooms-table-body
         - @rooms.each do |room|
-          tr
-            td = link_to 'Show', room
-            td = link_to 'Edit', edit_room_path(room)
-            td = link_to 'Destroy', room, data: { confirm: 'Are you sure?' }, method: :delete
+          == render 'room', room: room

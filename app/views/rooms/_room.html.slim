@@ -1,0 +1,10 @@
+tr
+  td = room.difficulty
+  td = room.user.email
+  td = room.member_count
+  td = room.members
+  td
+    .button-group
+      = link_to 'Show', room, class: 'button'
+      = link_to 'Edit', edit_room_path(room), class: 'button'
+      = link_to 'Destroy', room, data: { confirm: 'Are you sure?' }, method: :delete, class: 'button alert'
