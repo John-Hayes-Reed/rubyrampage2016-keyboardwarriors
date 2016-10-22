@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   with_options presence: true do |v|
-    v.validates :email
+    v.validates :email, uniqueness: true
     v.validates :encrypted_password
   end
 
