@@ -84,6 +84,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.config.action_cable.allowed_request_origins = ['http://secret-badlands-56956.herokuapp.com','https://secret-badlands-56956.herokuapp.com']
+  Rails.application.config.action_cable.allowed_request_origins = ['https://secret-badlands-56956.herokuapp.com']
   config.action_mailer.default_url_options = { :host => 'secret-badlands-56956.herokuapp.com' }
 end
