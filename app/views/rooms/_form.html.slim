@@ -1,0 +1,19 @@
+= form_for @room do |f|
+  - if @room.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@room.errors.count, "error")} prohibited this room from being saved:"
+      ul
+        - @room.errors.full_messages.each do |message|
+          li = message
+  .columns.small-12.medium-6
+    .columns.small-4
+      = f.label(:difficulty)
+    .columns.small-8
+      = f.select(:difficulty, Room.difficulty.options)
+  .columns.small-12.medium-6
+    .columns.small-4
+      = f.label(:member_count)
+    .columns.small-8
+      = f.select(:member_count, 2..4)
+
+  .actions = f.submit class: 'button'

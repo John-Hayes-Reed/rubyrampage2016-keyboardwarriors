@@ -22,3 +22,15 @@
 en:
   site_title: Keyboard Warriors
   logout: Log out
+
+  enumerize:
+    room:
+      status:
+        pending: Awaiting Warriors
+        active: Duel Has Started
+        complete: Battle Over
+      difficulty:
+        easy: Piece o' cake (Easy)
+        normal: A whole cake (Normal)
+        hard: Man eating cake with teeth (Hard)
+        rampage: Meta-f***ing-cake (Rampage)
