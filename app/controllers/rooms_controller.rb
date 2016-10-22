@@ -15,7 +15,7 @@ class RoomsController < ApplicationController
 
   # GET /rooms/new
   def new
-    @room = Room.new(user: current_user)
+    @room = Room.new(owner: current_user)
   end
 
   # GET /rooms/1/edit
@@ -25,10 +25,14 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(room_params.merge({user: current_user, status: :pending}))
+
+    @room = RoomService::Create.(
+      current_user,
+      room_params.merge({owner: current_user, status: :pending})
+    )
 
     respond_to do |format|
-      if @room.save
+      unless @room.errors.present?
         format.html { redirect_to @room, notice: 'Room was successfully created.' }
         format.json { render :show, status: :created, location: @room }
       else

@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :rooms
+  resources :rooms do
+    resources :users, only: %i[create destroy]
+  end
 
   mount ActionCable.server => '/cable'
 end

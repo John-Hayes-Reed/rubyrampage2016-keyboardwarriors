@@ -1,0 +1,2 @@
+module Rooms::UsersHelper
+end
