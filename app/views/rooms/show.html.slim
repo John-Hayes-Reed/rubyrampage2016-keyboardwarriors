@@ -1,10 +1,12 @@
-h1 = "#{@room.owner.name}'s Room"
+.row
+  .columns.small-12
+    h1 = "#{@room.owner.name}'s gathering"
 #room-content data-room-id="#{@room.id}" data-user-id="#{current_user.id}"
   .row
     .columns.small-12
       - if @room.owner == current_user
-        = link_to t('create_game'), '#', id: 'gameStarter', class: 'button', disabled: @room.waiting?
         = link_to t('close_room'), room_path(@room), method: :delete, class: 'button alert'
+        = link_to t('create_game'), '#', id: 'gameStarter', class: 'button', disabled: @room.waiting?
       -else
         = link_to t('leave_room'), room_user_path(@room, current_user), method: :delete, class: 'button'
 
@@ -16,7 +18,7 @@ h1 = "#{@room.owner.name}'s Room"
   .row
     .columns.small-12
       h3 = t('warriors_speech')
-      #messages
+      ul#messages
     .columns.small-12
       form
         label = t('chat')

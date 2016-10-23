@@ -1,9 +1,12 @@
-h1 New room
+.row
+  .columns.small-12
+    h1 New gathering
 
 .row
   .columns.small-12
     = link_to rooms_path, class: 'button' do
       = t('back')
+br
 .row
   .columns.small-12
     == render 'form'

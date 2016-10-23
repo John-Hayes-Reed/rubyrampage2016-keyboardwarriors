@@ -14,6 +14,7 @@ makeRoomChannel = (userId, roomId) ->
       trigger = data['trigger']
 
       $('#messages').append(message) if message?
+      $('#messages').scrollTop($('#messages')[0].scrollHeight) if message?
       $('ul.user-list').html(updated_members) if updated_members?
       $('#gameStarter').attr('disabled', true) if full? and not full
       $('#gameStarter').removeAttr('disabled') if full? and full

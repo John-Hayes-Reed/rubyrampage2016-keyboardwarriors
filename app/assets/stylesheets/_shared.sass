@@ -3,3 +3,39 @@
 
 ul.menu li
   padding-left: 0.5rem
+
+input[type=submit]
+  @include button($background: $success-color, $background-hover: darken($success-color, 10%))
+
+form.new_user,
+form.edit_user
+  max-width: 60%
+  margin: auto
+
+  &~ a
+    margin-left: 20%
+
+h2
+  margin-left: 20%
+
+ul#messages
+  height: 8rem
+  overflow-y: scroll
+
+li.chat-list-item
+  list-style-type: none
+
+  .warrior-name
+    font-weight: bold
+    text-decoration: underline
+
+.wordDisplay
+  font-size: 3rem
+  text-align: center
+  height: 10rem
+  line-height: 10rem
+
+.score-board
+  border-left-style: solid
+  border-left-width: 0.2rem
+  border-left-color: $medium-gray

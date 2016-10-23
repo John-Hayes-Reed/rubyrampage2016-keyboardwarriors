@@ -5,15 +5,15 @@
       ul
         - @room.errors.full_messages.each do |message|
           li = message
-  .columns.small-12.medium-6
-    .columns.small-4
+  .columns.small-12
+    .columns.small-2
       = f.label(:difficulty)
-    .columns.small-8
+    .columns.small-6.end
       = f.select(:difficulty, Room.difficulty.options)
-  .columns.small-12.medium-6
-    .columns.small-4
+  .columns.small-12
+    .columns.small-2
       = f.label(:member_count)
-    .columns.small-8
+    .columns.small-6.end
       = f.select(:member_count, 2..4)
 
   .actions = f.submit class: 'button'

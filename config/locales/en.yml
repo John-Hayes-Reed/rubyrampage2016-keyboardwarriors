@@ -24,6 +24,13 @@ en:
   welcome_message: "Welcome, %{name}"
   logout: Log out
   room_is_full: This mighty gathering is already at full capacity
+  successfully_updated: Successully updated
+  game_room: The Battlefield
+  new_room: Start a gathering
+  users: Warriors
+  create_game: Start game
+  close_room: Disband
+  back: Back
 
   enumerize:
     room:
