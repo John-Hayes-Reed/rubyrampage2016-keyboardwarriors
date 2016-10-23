@@ -7,7 +7,6 @@ makeGameChannel = (game_id, user_id) ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
-      console.log(data)
       score = data['score']
       updated_user_id = data['user_id']
       word = data['word']

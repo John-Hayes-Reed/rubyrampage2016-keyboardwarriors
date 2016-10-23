@@ -7,7 +7,6 @@ makeRoomChannel = (userId, roomId) ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
-      console.log(data)
       closed = data['closed']
       message = data['message']
       updated_members = data['updated_members']
@@ -22,21 +21,17 @@ makeRoomChannel = (userId, roomId) ->
       window.location.href = $(trigger).prop('href') if trigger?
 
     chat: (message) ->
-      console.log('entered chat function')
       @perform 'chat', user_id: userId, room_id: roomId, message: message
 
     trigger: () ->
-      console.log('game has been triggered')
       @perform 'trigger_game', room_id: roomId
 
   $(document).on 'keypress', '[data-behaviour~=chat_speaker]', (event) ->
-    console.log('inputing chat')
     if event.keyCode is 13
       App.room.chat event.target.value
       event.target.value = ''
       event.preventDefault()
   $('#gameStarter').on 'click', (event) ->
-    console.log('CLICKED!')
     App.room.trigger()
     event.preventDefault()
 
