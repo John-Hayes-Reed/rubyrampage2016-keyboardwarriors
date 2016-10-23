@@ -1,0 +1,29 @@
+h1 = t('game_room')
+.row#game-content data-game-id="#{@game.id}" data-user-id="#{current_user.id}"
+  .columns.small-12.medium-8
+    .wordDisplay data-word="#{@word.text}"
+      = @word.text
+    form
+      label Battle Typer
+      input type='text' data-behaviour='battle_input'
+  .columns.small-12.medium-4
+    - @game.scores.each do |score|
+      h4 = score.user.name
+      p.userScore data-user-id="#{score.user_id}"
+        |0
+
+.reveal#victorModal data-reveal=true
+  h1 The Victor!
+  p
+    |Congratulations warrior, your fingers were on fire! lets go back and rest up before the next battle
+  = link_to t('back'), root_path, class: 'button'
+
+= link_to '', '#', class: 'modalOpener', style: 'display: hidden', data: {open: 'victorModal'}
+
+.reveal#fallenModal data-reveal=true
+  h1 Alas dear warrior, troubling news
+  p
+    |The battle has been lost, let us go home and get ready to fight another day
+  = link_to t('back'), root_path, class: 'button'
+
+= link_to '', '#', class: 'modalOpener', style: 'display: hidden', data: {open: 'fallenModal'}

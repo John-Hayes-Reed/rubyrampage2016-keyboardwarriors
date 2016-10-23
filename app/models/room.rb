@@ -18,4 +18,8 @@ class Room < ApplicationRecord
     member_count == users.count
   end
 
+  def waiting?
+    !full?
+  end
+
 end

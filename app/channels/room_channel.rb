@@ -15,4 +15,9 @@ class RoomChannel < ApplicationCable::Channel
     message = data['message']
     ChatBroadcastJob.perform_later user, room, message if user && room
   end
+
+  def trigger_game(data)
+    room = Room.find(data['room_id']) rescue nil
+    GameService::Create.(Game.new, room)
+  end
 end

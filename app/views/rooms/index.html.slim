@@ -1,6 +1,7 @@
 h1 Listing rooms
 .row
   .columns.small-12
+    = link_to t('back'), root_path, class: 'button'
     = link_to new_room_path, class: 'button' do
       = t('new_room')
 .row

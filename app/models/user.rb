@@ -5,8 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :owned_rooms, class_name: 'Room', foreign_key: :owner_id
-  has_many :victorious_rooms, class_name: 'Room', foreign_key: :victor_id
   has_and_belongs_to_many :rooms
+  has_many :victorious_games, class_name: 'Game', foreign_key: :victor_id
 
   with_options presence: true do |v|
     v.validates :email, uniqueness: true
