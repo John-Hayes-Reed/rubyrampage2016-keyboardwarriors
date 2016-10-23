@@ -36,3 +36,8 @@ en:
         normal: A whole cake (Normal)
         hard: Man eating cake with teeth (Hard)
         rampage: Meta-f***ing-cake (Rampage)
+    word:
+      easy: easy
+      normal: normal
+      hard: hard
+      rampage: rampage
