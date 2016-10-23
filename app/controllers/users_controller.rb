@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_room, only: %i[create destroy]
 
   def create
+    redirect_to rooms_path, alert: t('room_gone_error') and return unless @room.present?
     redirect_to rooms_path, alert: t('room_is_full') and return if @room.full?
 
     RoomService::Join.(current_user, @room)
