@@ -13,4 +13,12 @@ class User < ApplicationRecord
     v.validates :encrypted_password
   end
 
+  before_save :set_initial_name
+
+  private
+
+  def set_initial_name
+    write_attribute :name, "Warrior#{read_attribute(:id)}"
+  end
+
 end

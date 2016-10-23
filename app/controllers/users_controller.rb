@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   before_action :set_room
 
   def create
+    redirect_to rooms_path, alert: t('room_is_full') and return if @room.full?
+
     RoomService::Join.(current_user, @room)
     redirect_to room_path(@room)
   end

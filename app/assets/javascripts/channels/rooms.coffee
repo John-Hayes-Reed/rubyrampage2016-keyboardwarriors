@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-App.cable.subscriptions.create "RoomsChannel",
+App.rooms = App.cable.subscriptions.create "RoomsChannel",
   connected: ->
     # Called when the subscription is ready for use on the server
 
@@ -14,16 +14,9 @@ App.cable.subscriptions.create "RoomsChannel",
     roomId = data['room_id']
     count = data['count']
     closed = data['closed']
-
-    console.log('room')
-    console.log(room)
-    console.log('room_id')
-    console.log(roomId)
-    console.log('count')
-    console.log(count)
-    console.log('closed')
-    console.log(closed)
+    updated_members = data['updated_members']
 
     $('#rooms-table-body').append room if room?
     $('.room-row[data-id="'+roomId+'"] .room-member-count span.users-count').html(count) if roomId? and count?
     $('.room-row[data-id="'+closed+'"]').remove() if closed?
+    $('ul.room-users').html(updated_members) if updated_members?

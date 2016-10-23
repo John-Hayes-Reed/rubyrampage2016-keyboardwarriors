@@ -5,9 +5,10 @@ tr.room-row data-id=room.id
     span.users-count = room.users.count
     |/
     span.members-count= room.member_count
-  td.room-users
-    - room.users.each do |user|
-      = user.name
+  td
+    ul.room-users
+      - room.users.each do |user|
+        li = user.name
   td
     .button-group
       = link_to t('join_room'), room_users_path(room_id: room), method: :post, class: 'button'

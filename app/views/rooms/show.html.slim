@@ -1,8 +1,22 @@
 h1 = "#{@room.owner.name}'s Room"
-#room-content data-room-id="#{@room.id}"
+#room-content data-room-id="#{@room.id}" data-user-id="#{current_user.id}"
   .row
     .columns.small-12
       - if @room.owner == current_user
         = link_to t('close_room'), room_path(@room), method: :delete, class: 'button alert'
       -else
         = link_to t('leave_room'), room_user_path(@room, current_user), method: :delete, class: 'button'
+
+  .row
+    .columns.small-12
+      h3 = t('warriors_gathered')
+      ul.user-list
+        = render(partial: 'user_list', locals: {users: @room.users})
+  .row
+    .columns.small-12
+      h3 = t('warriors_speech')
+      #messages
+    .columns.small-12
+      form
+        label = t('chat')
+        input type='text' data-behaviour='chat_speaker'

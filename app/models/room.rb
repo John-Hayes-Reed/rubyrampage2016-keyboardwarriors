@@ -14,4 +14,8 @@ class Room < ApplicationRecord
     v.validates :member_count, inclusion: {in: 2..4}
   end
 
+  def full?
+    member_count == users.count
+  end
+
 end

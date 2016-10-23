@@ -1,5 +1,5 @@
-makeRoomChannel = (roomId) ->
-  App.cable.subscriptions.create {channel: "RoomChannel", room_id: roomId},
+makeRoomChannel = (userId, roomId) ->
+  App.room = App.cable.subscriptions.create {channel: "RoomChannel", room_id: roomId},
     connected: ->
       # Called when the subscription is ready for use on the server
 
@@ -10,10 +10,23 @@ makeRoomChannel = (roomId) ->
       console.log(data)
       closed = data['closed']
       message = data['message']
-      console.log(closed)
-      console.log(message)
+      updated_members = data['updated_members']
+
+      $('#messages').append(message) if message?
+      $('ul.user-list').html(updated_members) if updated_members?
       alert('This warriors gathering has been closed, please vacate and find another') if closed?
 
+    chat: (message) ->
+      console.log('entered chat function')
+      @perform 'chat', user_id: userId, room_id: roomId, message: message
+
+  $(document).on 'keypress', '[data-behaviour~=chat_speaker]', (event) ->
+    console.log('inputing chat')
+    if event.keyCode is 13
+      App.room.chat event.target.value
+      event.target.value = ''
+      event.preventDefault()
 $ ->
   roomId = $('#room-content').data('roomId')
-  makeRoomChannel(roomId) if roomId?
+  userId = $('#room-content').data('userId')
+  makeRoomChannel(userId, roomId) if roomId?

@@ -22,6 +22,7 @@
 en:
   site_title: Keyboard Warriors
   logout: Log out
+  room_is_full: This mighty gathering is already at full capacity
 
   enumerize:
     room:
