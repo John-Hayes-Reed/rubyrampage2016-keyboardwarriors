@@ -21,6 +21,7 @@
 
 en:
   site_title: Keyboard Warriors
+  welcome_message: "Welcome, %{name}"
   logout: Log out
   room_is_full: This mighty gathering is already at full capacity
 

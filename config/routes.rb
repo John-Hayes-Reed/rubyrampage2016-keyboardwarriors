@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :rooms do
     resources :users, only: %i[create destroy]
   end
+  
+  resources :users, only: %i[edit update]
 
   mount ActionCable.server => '/cable'
 end

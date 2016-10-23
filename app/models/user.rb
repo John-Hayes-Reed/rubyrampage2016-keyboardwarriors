@@ -13,7 +13,7 @@ class User < ApplicationRecord
     v.validates :encrypted_password
   end
 
-  before_save :set_initial_name
+  before_create :set_initial_name
 
   private
 

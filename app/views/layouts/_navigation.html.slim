@@ -5,6 +5,8 @@
   .top-bar-right
     - if user_signed_in?
       ul.menu
+        li = t('welcome_message', name: current_user.name)
         li
-          = link_to destroy_user_session_path, method: :delete, class: 'button' do
-            = t('logout')
+          = link_to(t('edit_username'), edit_user_path(current_user), class: 'button')
+        li
+          = link_to t('logout'), destroy_user_session_path, method: :delete, class: 'button'
