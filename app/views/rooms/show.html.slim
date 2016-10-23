@@ -20,3 +20,11 @@ h1 = "#{@room.owner.name}'s Room"
       form
         label = t('chat')
         input type='text' data-behaviour='chat_speaker'
+
+.reveal#emptyRoomModal data-reveal=true
+  h1 Alas dear warrior, troubling news
+  p
+    |This gathering has been abandoned, But you can still fight another battle, lets go back and search for even greater foes!
+  = link_to t('back'), rooms_path, class: 'button'
+
+= link_to '', '#', id: 'modalOpener', style: 'display: hidden', data: {open: 'emptyRoomModal'}

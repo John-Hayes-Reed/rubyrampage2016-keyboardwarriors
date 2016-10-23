@@ -14,7 +14,7 @@ makeRoomChannel = (userId, roomId) ->
 
       $('#messages').append(message) if message?
       $('ul.user-list').html(updated_members) if updated_members?
-      alert('This warriors gathering has been closed, please vacate and find another') if closed?
+      $('#modalOpener').trigger('click') if closed?
 
     chat: (message) ->
       console.log('entered chat function')
