@@ -7,6 +7,7 @@ class RoomService::Create < RoomService
 
   def call
     @room = @user.owned_rooms.create(@params)
+    @room.users << @user
     AddRoomJob.perform_later @room
     @room
   end

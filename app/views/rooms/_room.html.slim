@@ -1,7 +1,10 @@
 tr.room-row data-id=room.id
   td.room-difficulty = room.difficulty
   td.room-owner = room.owner.try(:name)
-  td.room-member-count = room.member_count
+  td.room-member-count
+    span.users-count = room.users.count
+    |/
+    span.members-count= room.member_count
   td.room-users
     - room.users.each do |user|
       = user.name

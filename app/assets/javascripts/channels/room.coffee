@@ -1,15 +1,19 @@
-App.room = App.cable.subscriptions.create "RoomsChannel",
-  connected: ->
-    # Called when the subscription is ready for use on the server
+makeRoomChannel = (roomId) ->
+  App.cable.subscriptions.create {channel: "RoomChannel", room_id: roomId},
+    connected: ->
+      # Called when the subscription is ready for use on the server
 
-  disconnected: ->
-    # Called when the subscription has been terminated by the server
+    disconnected: ->
+      # Called when the subscription has been terminated by the server
 
-  received: (data) ->
-    room = data['room']
-    count = data['count']
-    closed = data['closed']
-    
-    $('.rooms-table-body').append data['room'] if room? and not count?
-    $('.room-member-count[data-id="'+room+'"]').html(count) if room? and count?
-    $('.room-row[data-id="'+closed+'"]') if closed?
+    received: (data) ->
+      console.log(data)
+      closed = data['closed']
+      message = data['message']
+      console.log(closed)
+      console.log(message)
+      alert('This warriors gathering has been closed, please vacate and find another') if closed?
+
+$ ->
+  roomId = $('#room-content').data('roomId')
+  makeRoomChannel(roomId) if roomId?

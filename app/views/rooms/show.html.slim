@@ -1,3 +1,8 @@
-p#notice = notice
-
-= link_to t('leave_room'), room_user_path(@room, current_user), method: :delete, class: 'button'
+h1 = "#{@room.owner.name}'s Room"
+#room-content data-room-id="#{@room.id}"
+  .row
+    .columns.small-12
+      - if @room.owner == current_user
+        = link_to t('close_room'), room_path(@room), method: :delete, class: 'button alert'
+      -else
+        = link_to t('leave_room'), room_user_path(@room, current_user), method: :delete, class: 'button'
